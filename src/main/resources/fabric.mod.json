@@ -1,24 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "server-command",
+  "id": "servercommand",
   "version": "1.0.0",
   "name": "Server Command",
   "description": "Useful commands for Minecraft servers",
   "authors": [
     "Calboot"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://github.com/Calboot/Server-Command",
+    "issues": "https://github.com/Calboot/Server-Command/issues",
+    "sources": "https://github.com/Calboot/Server-Command"
+  },
   "license": "GPL-3.0",
   "icon": "assets/servercommand/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.edp2021c1.servercommand.ServerCommand"
+      "com.calboot.servercommand.ServerCommand"
     ]
   },
+  "mixins": [
+    "servercommand.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.16.0",
     "fabric-api": "*",
-    "minecraft": "1.19.4"
+    "minecraft": "1.19.4",
+    "carpet": ">=1.4.100"
   }
 }

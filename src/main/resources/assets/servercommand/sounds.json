@@ -1,0 +1,8 @@
+{
+  "trader_spawned": {
+    "subtitle": "sound.servercommand.trader_spawned",
+    "sounds": [
+      "servercommand:trader_spawned"
+    ]
+  }
+}

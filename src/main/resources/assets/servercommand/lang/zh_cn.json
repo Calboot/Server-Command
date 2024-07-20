@@ -1,6 +1,18 @@
 {
-  "command.servercommand.tpt.success": "将玩家'%s'传送到'%s'",
+  "command.servercommand.tpt.playernotfound": "未找到玩家 '%s'",
+  "command.servercommand.tpt.success": "将玩家 '%s' 传送到 '%s'",
   "command.servercommand.clearitem.none": "没有可清除的掉落物",
-  "command.servercommand.clearitem.single": "清楚了1个掉落物",
-  "command.servercommand.clearitem.multiple": "清楚了%d个掉落物"
+  "command.servercommand.clearitem.single": "清除了1个掉落物",
+  "command.servercommand.clearitem.multiple": "清除了%d个掉落物",
+  "message.servercommand.trader_spawned": "流浪商人在 [%d %d %d] 处刷新",
+  "sound.servercommand.trader_spawned": "游商刷新提醒",
+  "servercommand.rule.disableBatSpawning.desc": "禁用烦人的蝙蝠刷新",
+  "servercommand.rule.wanderingTraderSpawnedMessage.desc": "启用流浪商人生成时的消息提醒",
+  "servercommand.rule.wanderingTraderSpawnedSound.desc": "启用流浪商人生成时的声音提醒",
+  "servercommand.rule.commandC.desc": "启用 /c 命令以允许玩家切换到旁观者模式",
+  "servercommand.rule.commandS.desc": "启用 /s 命令以允许玩家切换回生存模式",
+  "servercommand.rule.commandTpt.desc": "启用 /tpt 命令以允许玩家传送到其他玩家",
+  "servercommand.rule.commandSuicide.desc": "启用 /suicide 命令以允许玩家自杀",
+  "servercommand.rule.commandShowSeed.desc": "启用 /showseed 命令以在 /seed 命令不可用时获取种子",
+  "servercommand.rule.commandClearItem.desc": "启用 /clearitem 命令以快捷清除掉落物"
 }

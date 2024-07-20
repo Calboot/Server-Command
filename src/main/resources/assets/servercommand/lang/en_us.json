@@ -1,6 +1,18 @@
 {
+  "command.servercommand.tpt.playernotfound": "Player named '%s' not found",
   "command.servercommand.tpt.success": "Teleported '%s' to '%s'",
   "command.servercommand.clearitem.none": "No item cleared",
   "command.servercommand.clearitem.single": "Cleared one item",
-  "command.servercommand.clearitem.multiple": "Cleared %d items"
+  "command.servercommand.clearitem.multiple": "Cleared %d items",
+  "message.servercommand.trader_spawned": "Wandering trader spawned at [%d %d %d]",
+  "sound.servercommand.trader_spawned": "Wandering trader spawned notification",
+  "servercommand.rule.disableBatSpawning.desc": "Disable annoying bat spawning.",
+  "servercommand.rule.wanderingTraderSpawnedMessage.desc": "Enables showing a message when wandering traders are spawned.",
+  "servercommand.rule.wanderingTraderSpawnedSound.desc": "Enables playing a sound effect when wandering traders are spawned.",
+  "servercommand.rule.commandC.desc": "Enables command /c to allow players to turn into spectator mode.",
+  "servercommand.rule.commandS.desc": "Enables command /s to allow players to turn back into survival mode.",
+  "servercommand.rule.commandTpt.desc": "Enables command /tpt to allow players to teleport to other players.",
+  "servercommand.rule.commandSuicide.desc": "Enables command /suicide to allow players to kill themselves.",
+  "servercommand.rule.commandShowSeed.desc": "Enables command /showseed to get seed when command /seed is disabled for some reason.",
+  "servercommand.rule.commandClearItem.desc": "Enables command /clearitem to clear items fast and conveniently."
 }
