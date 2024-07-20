@@ -1,0 +1,6 @@
+{
+  "command.servercommand.tpt.success": "将玩家'%s'传送到'%s'",
+  "command.servercommand.clearitem.none": "没有可清除的掉落物",
+  "command.servercommand.clearitem.single": "清楚了1个掉落物",
+  "command.servercommand.clearitem.multiple": "清楚了%d个掉落物"
+}

@@ -1,0 +1,6 @@
+{
+  "command.servercommand.tpt.success": "Teleported '%s' to '%s'",
+  "command.servercommand.clearitem.none": "No item cleared",
+  "command.servercommand.clearitem.single": "Cleared one item",
+  "command.servercommand.clearitem.multiple": "Cleared %d items"
+}

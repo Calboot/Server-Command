@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "server-command",
+  "version": "1.0.0",
+  "name": "Server Command",
+  "description": "Useful commands for Minecraft servers",
+  "authors": [
+    "Calboot"
+  ],
+  "contact": {},
+  "license": "GPL-3.0",
+  "icon": "assets/servercommand/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.edp2021c1.servercommand.ServerCommand"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": "1.19.4"
+  }
+}
