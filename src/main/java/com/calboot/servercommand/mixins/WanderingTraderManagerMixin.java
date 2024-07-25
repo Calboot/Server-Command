@@ -19,8 +19,8 @@ public abstract class WanderingTraderManagerMixin {
     @Accessor
     abstract ServerWorldProperties getProperties();
 
-    @Inject(method = "spawn", at = @At("RETURN"))
-    public void onTraderSpawn(final ServerWorld world, final boolean spawnMonsters, final boolean spawnAnimals, final CallbackInfoReturnable<Integer> cir) {
+    @Inject(method = "spawn", at = @At("TAIL"))
+    public void onTraderSpawned(final ServerWorld world, final boolean spawnMonsters, final boolean spawnAnimals, final CallbackInfoReturnable<Integer> cir) {
         if (cir.getReturnValue() == 1) {
             val entity = world.getEntity(getProperties().getWanderingTraderId());
             if (entity != null) {

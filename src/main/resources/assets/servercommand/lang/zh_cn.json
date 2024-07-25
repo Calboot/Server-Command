@@ -14,5 +14,6 @@
   "servercommand.rule.commandTpt.desc": "启用 /tpt 命令以允许玩家传送到其他玩家",
   "servercommand.rule.commandSuicide.desc": "启用 /suicide 命令以允许玩家自杀",
   "servercommand.rule.commandShowSeed.desc": "启用 /showseed 命令以在 /seed 命令不可用时获取种子",
-  "servercommand.rule.commandClearItem.desc": "启用 /clearitem 命令以快捷清除掉落物"
+  "servercommand.rule.commandClearItem.desc": "启用 /clearitem 命令以快捷清除掉落物",
+  "servercommand.rule.highlightZombieVillagers.desc": "高亮僵尸村民以防止误杀"
 }

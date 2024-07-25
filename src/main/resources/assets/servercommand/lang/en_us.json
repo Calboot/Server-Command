@@ -14,5 +14,6 @@
   "servercommand.rule.commandTpt.desc": "Enables command /tpt to allow players to teleport to other players.",
   "servercommand.rule.commandSuicide.desc": "Enables command /suicide to allow players to kill themselves.",
   "servercommand.rule.commandShowSeed.desc": "Enables command /showseed to get seed when command /seed is disabled for some reason.",
-  "servercommand.rule.commandClearItem.desc": "Enables command /clearitem to clear items fast and conveniently."
+  "servercommand.rule.commandClearItem.desc": "Enables command /clearitem to clear items fast and conveniently.",
+  "servercommand.rule.highlightZombieVillagers.desc": "Highlights zombie villagers to avoid killing them by mistake."
 }

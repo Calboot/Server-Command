@@ -53,4 +53,9 @@ public class ServerCommandSettings {
     )
     public static boolean commandTpt = false;
 
+    @Rule(
+            categories = {EXPERIMENTAL, SERVERCOMMAND}
+    )
+    public static boolean highlightZombieVillagers = false;
+
 }
