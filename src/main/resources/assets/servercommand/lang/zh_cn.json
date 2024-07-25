@@ -6,6 +6,7 @@
   "command.servercommand.clearitem.multiple": "清除了%d个掉落物",
   "message.servercommand.trader_spawned": "流浪商人在 [%d %d %d] 处刷新",
   "sound.servercommand.trader_spawned": "游商刷新提醒",
+  "message.servercommand.lightning_tracked": "闪电劈中主世界 [%d %d %d] 处",
   "servercommand.rule.disableBatSpawning.desc": "禁用烦人的蝙蝠刷新",
   "servercommand.rule.wanderingTraderSpawnedMessage.desc": "启用流浪商人生成时的消息提醒",
   "servercommand.rule.wanderingTraderSpawnedSound.desc": "启用流浪商人生成时的声音提醒",
@@ -15,5 +16,7 @@
   "servercommand.rule.commandSuicide.desc": "启用 /suicide 命令以允许玩家自杀",
   "servercommand.rule.commandShowSeed.desc": "启用 /showseed 命令以在 /seed 命令不可用时获取种子",
   "servercommand.rule.commandClearItem.desc": "启用 /clearitem 命令以快捷清除掉落物",
-  "servercommand.rule.highlightZombieVillagers.desc": "高亮僵尸村民以防止误杀"
+  "servercommand.rule.highlightZombieVillagers.desc": "高亮僵尸村民以防止误杀",
+  "servercommand.rule.trackOverworldLightnings.desc": "跟踪主世界闪电",
+  "servercommand.rule.trackOverworldLightningsMaxDistant.desc": "玩家被通知闪电击中事件的最远距离，0代表无限制"
 }

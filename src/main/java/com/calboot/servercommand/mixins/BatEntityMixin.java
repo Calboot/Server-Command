@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BatEntity.class)
 public class BatEntityMixin {
 
-    @Inject(method = "canSpawn", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "canSpawn", at = @At("RETURN"), cancellable = true)
     private static void canSpawn(final CallbackInfoReturnable<Boolean> cir) {
         if (ServerCommandSettings.disableBatSpawning && cir.getReturnValue()) {
             cir.setReturnValue(false);

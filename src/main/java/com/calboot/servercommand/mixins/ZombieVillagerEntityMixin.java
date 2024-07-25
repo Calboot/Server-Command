@@ -24,7 +24,9 @@ public class ZombieVillagerEntityMixin {
     private void onTick(final CallbackInfo ci) {
         val thisEntity = ((ZombieVillagerEntity) (Object) this);
         if (ServerCommandSettings.highlightZombieVillagers) {
-            thisEntity.addStatusEffect((glowingEffect = new StatusEffectInstance(GLOWING_EFFECT_INSTANCE)));
+            if (!thisEntity.hasStatusEffect(StatusEffects.GLOWING)) {
+                thisEntity.addStatusEffect((glowingEffect = new StatusEffectInstance(GLOWING_EFFECT_INSTANCE)));
+            }
         } else {
             if (glowingEffect != null) {
                 ((StatusEffectInstanceMixin) glowingEffect).setDuration(0);

@@ -11,6 +11,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ public final class ServerCommand implements CarpetExtension, ModInitializer {
 
     public final SettingsManager settingsManager = new SettingsManager(MOD_VERSION, MOD_ID, MOD_NAME);
 
+    public MinecraftServer mcServer;
+
     @Override
     public void onInitialize() {
         CarpetServer.manageExtension(INSTANCE);
@@ -40,6 +43,11 @@ public final class ServerCommand implements CarpetExtension, ModInitializer {
     public void onGameStarted() {
         settingsManager.parseSettingsClass(ServerCommandSettings.class);
         registerSoundEvents();
+    }
+
+    @Override
+    public void onServerLoaded(final MinecraftServer server) {
+        this.mcServer = server;
     }
 
     @Override
