@@ -10,68 +10,71 @@ import static carpet.api.settings.RuleCategory.*;
 
 public class ServerCommandSettings {
 
-    public static final String SERVERCOMMAND = "servercommand";
-
     @Rule(
-            categories = {FEATURE, EXPERIMENTAL, SERVERCOMMAND}
+            categories = {FEATURE, EXPERIMENTAL}
     )
     public static boolean disableBatSpawning = false;
 
     @Rule(
-            categories = {EXPERIMENTAL, SERVERCOMMAND}
+            categories = {EXPERIMENTAL}
     )
     public static boolean wanderingTraderSpawnedMessage = false;
 
     @Rule(
-            categories = {EXPERIMENTAL, SERVERCOMMAND}
+            categories = {EXPERIMENTAL}
     )
     public static boolean wanderingTraderSpawnedSound = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandC = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandS = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandClearItem = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandShowSeed = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandSuicide = false;
 
     @Rule(
-            categories = {COMMAND, SERVERCOMMAND}
+            categories = {COMMAND}
     )
     public static boolean commandTpt = false;
 
     @Rule(
-            categories = {EXPERIMENTAL, SERVERCOMMAND}
+            categories = {EXPERIMENTAL}
     )
     public static boolean highlightZombieVillagers = false;
 
     @Rule(
-            categories = {EXPERIMENTAL, SERVERCOMMAND}
+            categories = {EXPERIMENTAL}
     )
     public static boolean trackOverworldLightnings = false;
 
     @Rule(
-            categories = {EXPERIMENTAL, SERVERCOMMAND},
+            categories = {EXPERIMENTAL},
             validators = RadiusValidator.class
     )
     public static int trackOverworldLightningsMaxDistant = 128;
+
+    @Rule(
+            categories = {EXPERIMENTAL}
+    )
+    public static boolean trackOverworldThunderstorm = false;
 
     private static final class RadiusValidator extends Validator<Integer> {
 

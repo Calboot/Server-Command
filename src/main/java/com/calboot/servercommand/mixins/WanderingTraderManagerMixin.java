@@ -23,6 +23,7 @@ public class WanderingTraderManagerMixin {
 
     @Inject(method = "spawn", at = @At("RETURN"))
     public void onTraderSpawned(final ServerWorld world, final boolean spawnMonsters, final boolean spawnAnimals, final CallbackInfoReturnable<Integer> cir) {
+        // Tracking wandering trader spawning
         if (cir.getReturnValue() == 1) {
             val entity = world.getEntity(properties.getWanderingTraderId());
             if (entity != null) {

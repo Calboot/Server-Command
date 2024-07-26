@@ -16,7 +16,9 @@ import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.level.ServerWorldProperties;
 import net.minecraft.world.level.storage.LevelStorage;
 import net.minecraft.world.spawner.Spawner;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -27,10 +29,17 @@ import java.util.List;
 import java.util.concurrent.Executor;
 
 @Mixin(ServerWorld.class)
-public class ServerWorldMixin {
+public abstract class ServerWorldMixin {
 
     @Unique
     private RegistryKey<World> worldRegistryKey;
+
+    @Unique
+    private boolean thunderingPreviousValue;
+
+    @Shadow
+    @Final
+    private ServerWorldProperties worldProperties;
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void init(
@@ -47,12 +56,31 @@ public class ServerWorldMixin {
             final boolean shouldTickTime,
             final CallbackInfo ci) {
         worldRegistryKey = worldKey;
+        thunderingPreviousValue = worldProperties.isThundering();
+    }
+
+    @Inject(method = "tickWeather", at = @At("RETURN"))
+    private void onTickWeather(final CallbackInfo ci) {
+        // Tracking thunderstorms
+        if (isThundering() != thunderingPreviousValue
+                && isOverworld()
+                && ServerCommandSettings.trackOverworldThunderstorm
+        ) {
+            val server = ((ServerWorld) (Object) this).getServer();
+            val txt = isThundering()
+                    ? Text.translatable("message.servercommand.thunder.started")
+                    : Text.translatable("message.servercommand.thunder.stopped");
+            server.getPlayerManager().getPlayerList().forEach(player -> player.sendMessage(txt));
+            server.sendMessage(txt);
+            thunderingPreviousValue = isThundering();
+        }
     }
 
     @Inject(method = "spawnEntity", at = @At("RETURN"))
     private void onEntitySpawned(final Entity entity, final CallbackInfoReturnable<Boolean> cir) {
+        // Tracking lightnings
         if (EntityType.LIGHTNING_BOLT.equals(entity.getType())
-                && World.OVERWORLD.equals(worldRegistryKey)
+                && isOverworld()
                 && ServerCommandSettings.trackOverworldLightnings
                 && cir.getReturnValue()
         ) {
@@ -70,6 +98,16 @@ public class ServerWorldMixin {
             }
             server.sendMessage(txt);
         }
+    }
+
+    @Unique
+    private boolean isOverworld() {
+        return World.OVERWORLD.equals(worldRegistryKey);
+    }
+
+    @Unique
+    private boolean isThundering(){
+        return worldProperties.isRaining() && worldProperties.isThundering();
     }
 
     @Unique

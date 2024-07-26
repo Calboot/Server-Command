@@ -12,6 +12,7 @@ public class BatEntityMixin {
 
     @Inject(method = "canSpawn", at = @At("RETURN"), cancellable = true)
     private static void canSpawn(final CallbackInfoReturnable<Boolean> cir) {
+        // Disabling bat spawning
         if (ServerCommandSettings.disableBatSpawning && cir.getReturnValue()) {
             cir.setReturnValue(false);
         }

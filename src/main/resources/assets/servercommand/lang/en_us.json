@@ -7,6 +7,11 @@
   "message.servercommand.trader_spawned": "Wandering trader spawned at [%d %d %d]",
   "sound.servercommand.trader_spawned": "Wandering trader spawned notification",
   "message.servercommand.lightning_tracked": "Lightning struck at [%d %d %d] in overworld",
+  "message.servercommand.thunder.started": "Thunderstorm started in overworld!",
+  "message.servercommand.thunder.stopped": "Thunderstorm stopped in overworld!",
+  "servercommand.category.feature": "feature",
+  "servercommand.category.command": "command",
+  "servercommand.category.experimental": "experimental",
   "servercommand.rule.disableBatSpawning.desc": "Disable annoying bat spawning.",
   "servercommand.rule.wanderingTraderSpawnedMessage.desc": "Enables showing a message when wandering traders are spawned.",
   "servercommand.rule.wanderingTraderSpawnedSound.desc": "Enables playing a sound effect when wandering traders are spawned.",
@@ -18,5 +23,6 @@
   "servercommand.rule.commandClearItem.desc": "Enables command /clearitem to clear items fast and conveniently.",
   "servercommand.rule.highlightZombieVillagers.desc": "Highlights zombie villagers to avoid killing them by mistake.",
   "servercommand.rule.trackOverworldLightnings.desc": "Enables tracking lightnings in overworld.",
-  "servercommand.rule.trackOverworldLightningsMaxDistant.desc": "Max distant of players from the struck position to get informed, zero for no limit."
+  "servercommand.rule.trackOverworldLightningsMaxDistant.desc": "Max distant of players from the struck position to get informed, zero for no limit.",
+  "servercommand.rule.trackOverworldThunderstorm.desc": "Enables tracking starts and stops of thunderstorms in overworld."
 }

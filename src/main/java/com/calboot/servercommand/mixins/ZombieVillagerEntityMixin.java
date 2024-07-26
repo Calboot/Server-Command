@@ -22,6 +22,7 @@ public class ZombieVillagerEntityMixin {
 
     @Inject(method = "tick", at = @At("HEAD"))
     private void onTick(final CallbackInfo ci) {
+        // Highlighting zombie villagers
         val thisEntity = ((ZombieVillagerEntity) (Object) this);
         if (ServerCommandSettings.highlightZombieVillagers) {
             if (!thisEntity.hasStatusEffect(StatusEffects.GLOWING)) {
