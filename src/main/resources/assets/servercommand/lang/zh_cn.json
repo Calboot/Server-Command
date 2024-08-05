@@ -1,11 +1,10 @@
 {
-  "command.servercommand.tpt.playernotfound": "未找到玩家 '%s'",
+  "command.servercommand.tpt.player_not_found": "未找到玩家 '%s'",
   "command.servercommand.tpt.success": "将玩家 '%s' 传送到 '%s'",
   "command.servercommand.clearitem.none": "没有可清除的掉落物",
   "command.servercommand.clearitem.single": "清除了1个掉落物",
   "command.servercommand.clearitem.multiple": "清除了%d个掉落物",
   "message.servercommand.trader_spawned": "流浪商人在 [%d %d %d] 处刷新",
-  "sound.servercommand.trader_spawned": "游商刷新提醒",
   "message.servercommand.lightning_tracked": "闪电劈中主世界 [%d %d %d] 处",
   "message.servercommand.thunder.started": "主世界雷暴开始了！",
   "message.servercommand.thunder.stopped": "主世界雷暴结束了！",

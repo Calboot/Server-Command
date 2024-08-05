@@ -12,13 +12,13 @@ import net.minecraft.text.Texts;
 public final class ShowSeedCommand {
 
     private static int showSeed(CommandContext<ServerCommandSource> context) {
-        long l    = context.getSource().getWorld().getSeed();
+        val  l    = context.getSource().getWorld().getSeed();
         Text text = Texts.bracketedCopyable(String.valueOf(l));
         context.getSource().sendFeedback(Text.translatable("commands.seed.success", text), false);
         return (int) l;
     }
 
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
+    public static void register(final CommandDispatcher<ServerCommandSource> dispatcher) {
         val command = CommandManager
                 .literal("showseed")
                 .requires(s -> ServerCommandSettings.commandShowSeed)

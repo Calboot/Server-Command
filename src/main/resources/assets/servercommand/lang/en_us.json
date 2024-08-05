@@ -1,11 +1,10 @@
 {
-  "command.servercommand.tpt.playernotfound": "Player named '%s' not found",
+  "command.servercommand.tpt.player_not_found": "Player named '%s' not found",
   "command.servercommand.tpt.success": "Teleported '%s' to '%s'",
   "command.servercommand.clearitem.none": "No item cleared",
   "command.servercommand.clearitem.single": "Cleared one item",
   "command.servercommand.clearitem.multiple": "Cleared %d items",
   "message.servercommand.trader_spawned": "Wandering trader spawned at [%d %d %d]",
-  "sound.servercommand.trader_spawned": "Wandering trader spawned notification",
   "message.servercommand.lightning_tracked": "Lightning struck at [%d %d %d] in overworld",
   "message.servercommand.thunder.started": "Thunderstorm started in overworld!",
   "message.servercommand.thunder.stopped": "Thunderstorm stopped in overworld!",

@@ -1,6 +1,7 @@
 package com.calboot.servercommand.mixins;
 
 import com.calboot.servercommand.ServerCommandSettings;
+import com.calboot.servercommand.Utils;
 import lombok.val;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -9,7 +10,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.WorldGenerationProgressListener;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionOptions;
@@ -62,17 +62,17 @@ public abstract class ServerWorldMixin {
     @Inject(method = "tickWeather", at = @At("RETURN"))
     private void onTickWeather(final CallbackInfo ci) {
         // Tracking thunderstorms
-        if (isThundering() != thunderingPreviousValue
-                && isOverworld()
+        if (isCurrentlyThundering() != thunderingPreviousValue
+                && isThisOverworld()
                 && ServerCommandSettings.trackOverworldThunderstorm
         ) {
             val server = ((ServerWorld) (Object) this).getServer();
-            val txt = isThundering()
+            val txt = isCurrentlyThundering()
                     ? Text.translatable("message.servercommand.thunder.started")
                     : Text.translatable("message.servercommand.thunder.stopped");
             server.getPlayerManager().getPlayerList().forEach(player -> player.sendMessage(txt));
             server.sendMessage(txt);
-            thunderingPreviousValue = isThundering();
+            thunderingPreviousValue = isCurrentlyThundering();
         }
     }
 
@@ -80,18 +80,22 @@ public abstract class ServerWorldMixin {
     private void onEntitySpawned(final Entity entity, final CallbackInfoReturnable<Boolean> cir) {
         // Tracking lightnings
         if (EntityType.LIGHTNING_BOLT.equals(entity.getType())
-                && isOverworld()
+                && isThisOverworld()
                 && ServerCommandSettings.trackOverworldLightnings
                 && cir.getReturnValue()
         ) {
             val blockPos = ((LightningEntityMixin) entity).getStuckBlockPos();
             val server   = ((ServerWorld) (Object) this).getServer();
             val players  = server.getPlayerManager().getPlayerList();
-            val txt      = Text.translatable("message.servercommand.lightning_tracked", blockPos.getX(), blockPos.getY(), blockPos.getZ());
+            val txt = Text.translatable(
+                    "message.servercommand.lightning_tracked",
+                    blockPos.getX(),
+                    blockPos.getY(),
+                    blockPos.getZ());
             if (ServerCommandSettings.trackOverworldLightningsMaxDistant > 0) {
                 players
                         .stream()
-                        .filter(player -> getSquaredDistance2D(blockPos, player.getBlockPos()) <= MathHelper.square(ServerCommandSettings.trackOverworldLightningsMaxDistant))
+                        .filter(player -> Utils.getSquaredDistance2D(blockPos, player.getBlockPos()) <= MathHelper.square(ServerCommandSettings.trackOverworldLightningsMaxDistant))
                         .forEach(player -> player.sendMessage(txt, false));
             } else {
                 players.forEach(player -> player.sendMessage(txt));
@@ -101,18 +105,13 @@ public abstract class ServerWorldMixin {
     }
 
     @Unique
-    private boolean isOverworld() {
+    private boolean isThisOverworld() {
         return World.OVERWORLD.equals(worldRegistryKey);
     }
 
     @Unique
-    private boolean isThundering(){
+    private boolean isCurrentlyThundering() {
         return worldProperties.isRaining() && worldProperties.isThundering();
-    }
-
-    @Unique
-    private double getSquaredDistance2D(final BlockPos pos1, final BlockPos pos2) {
-        return MathHelper.square(pos1.getX() - pos2.getX()) + MathHelper.square(pos1.getZ() - pos2.getZ());
     }
 
 }

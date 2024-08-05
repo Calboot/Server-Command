@@ -4,9 +4,6 @@ import carpet.CarpetExtension;
 import carpet.CarpetServer;
 import carpet.api.settings.SettingsManager;
 import com.calboot.servercommand.commands.*;
-import com.calboot.servercommand.sounds.TraderSpawnedSound;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
@@ -14,10 +11,6 @@ import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 import java.util.Map;
 
 public final class ServerCommand implements CarpetExtension, ModInitializer {
@@ -42,7 +35,6 @@ public final class ServerCommand implements CarpetExtension, ModInitializer {
     @Override
     public void onGameStarted() {
         settingsManager.parseSettingsClass(ServerCommandSettings.class);
-        registerSoundEvents();
     }
 
     @Override
@@ -72,24 +64,7 @@ public final class ServerCommand implements CarpetExtension, ModInitializer {
 
     @Override
     public Map<String, String> canHasTranslations(final String lang) {
-        final InputStream langStream = ServerCommand.class.getClassLoader().getResourceAsStream("assets/servercommand/lang/%s.json".formatted(lang));
-        if (langStream == null) {
-            // we don't have that language
-            return Collections.emptyMap();
-        }
-        final String jsonData;
-        try {
-            jsonData = new String(langStream.readAllBytes(), StandardCharsets.UTF_8);
-            langStream.close();
-        } catch (final IOException e) {
-            return Collections.emptyMap();
-        }
-        return new GsonBuilder().setLenient().create().fromJson(jsonData, new TypeToken<Map<String, String>>() {
-        }.getType());
-    }
-
-    public void registerSoundEvents() {
-        TraderSpawnedSound.register();
+        return Utils.getTranslation(lang);
     }
 
 }
